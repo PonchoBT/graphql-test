@@ -8,24 +8,7 @@ import {
 
 import { Post } from "./__generated__/graphql";
 
-import { gql } from "@apollo/client";
-
-export const GET_POSTS = gql`
-  query Posts {
-    posts {
-      data {
-        id
-        title
-        body
-        user {
-          id
-          name
-          email
-        }
-      }
-    }
-  }
-`;
+import { GET_POSTS, CREATE_POSTS, UPDATE_POSTS, DELETE_POSTS } from "./graphql/queires";
 
 const client = new ApolloClient({
   uri: "https://graphqlzero.almansi.me/api",
@@ -53,7 +36,10 @@ const NewPostItem = (post: Post) => (
 );
 
 export const Main = () => {
-  const { loading, error, data } = useQuery(GET_POSTS);
+  const { loading, error, data } = useQuery(GET_POSTS, {
+    variables: { limit: 10, page: 1 }, // Ajusta el límite y el número de página según sea necesario
+  });
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
