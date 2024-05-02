@@ -1,20 +1,20 @@
 import { gql } from "@apollo/client";
 
 export const GET_POSTS = gql`
-query Posts($limit:Int!, $page:Int!) {
-  posts(options: { paginate: { page:$page, limit:$limit } }) {
-    data {
-      id
-      title
-      body
-      user {
+  query Posts($options:PageQueryOptions  ) {
+    posts(options: $options) {
+      data {
         id
-        name
-        email
+        title
+        body
+        user {
+          id
+          name
+          email
+        }
       }
     }
   }
-}
 `;
 
 export const CREATE_POSTS = gql`
