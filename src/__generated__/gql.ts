@@ -13,7 +13,14 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query Posts {\n    posts {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n": types.PostsDocument,
+    "\n  query Posts($options: PageQueryOptions) {\n    posts(options: $options) {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n": types.PostsDocument,
+    "\n  mutation CreatePost($input: CreatePostInput!) {\n    createPost(input: $input) {\n      id\n      title\n      body\n      user {\n        id\n        name\n        email\n      }\n    }\n  }\n": types.CreatePostDocument,
+    "\n  mutation UpdatePost($id: ID!, $input: UpdatePostInput!) {\n    updatePost(id: $id, input: $input) {\n      id\n      title\n      body\n      user {\n        id\n        name\n        email\n      }\n    }\n  }\n": types.UpdatePostDocument,
+    "\n  mutation DeletePost($id: ID!) {\n    deletePost(id: $id)\n  }\n": types.DeletePostDocument,
+    "\n  query Posts($options:PageQueryOptions  ) {\n    posts(options: $options) {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n": types.PostsDocument,
+    "\n  mutation CreatePost($input:CreatePostInput! ) {\n    createPost(input:$input) {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n     }\n  }\n": types.CreatePostDocument,
+    "\n  mutation UpdatePost($id:ID!, $input: UpdatePostInput! ) {\n    updatePost(id:$id, input:$input) {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n    }\n  }\n": types.UpdatePostDocument,
+    "\n  mutation DeletePost($id:ID! ) {\n    deletePost(id:$id)\n  }\n": types.DeletePostDocument,
 };
 
 /**
@@ -33,7 +40,35 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query Posts {\n    posts {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Posts {\n    posts {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query Posts($options: PageQueryOptions) {\n    posts(options: $options) {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Posts($options: PageQueryOptions) {\n    posts(options: $options) {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation CreatePost($input: CreatePostInput!) {\n    createPost(input: $input) {\n      id\n      title\n      body\n      user {\n        id\n        name\n        email\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation CreatePost($input: CreatePostInput!) {\n    createPost(input: $input) {\n      id\n      title\n      body\n      user {\n        id\n        name\n        email\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation UpdatePost($id: ID!, $input: UpdatePostInput!) {\n    updatePost(id: $id, input: $input) {\n      id\n      title\n      body\n      user {\n        id\n        name\n        email\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation UpdatePost($id: ID!, $input: UpdatePostInput!) {\n    updatePost(id: $id, input: $input) {\n      id\n      title\n      body\n      user {\n        id\n        name\n        email\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation DeletePost($id: ID!) {\n    deletePost(id: $id)\n  }\n"): (typeof documents)["\n  mutation DeletePost($id: ID!) {\n    deletePost(id: $id)\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query Posts($options:PageQueryOptions  ) {\n    posts(options: $options) {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Posts($options:PageQueryOptions  ) {\n    posts(options: $options) {\n      data {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation CreatePost($input:CreatePostInput! ) {\n    createPost(input:$input) {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n     }\n  }\n"): (typeof documents)["\n  mutation CreatePost($input:CreatePostInput! ) {\n    createPost(input:$input) {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n     }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation UpdatePost($id:ID!, $input: UpdatePostInput! ) {\n    updatePost(id:$id, input:$input) {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n    }\n  }\n"): (typeof documents)["\n  mutation UpdatePost($id:ID!, $input: UpdatePostInput! ) {\n    updatePost(id:$id, input:$input) {\n        id\n        title\n        body\n        user {\n          id\n          name\n          email\n        }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation DeletePost($id:ID! ) {\n    deletePost(id:$id)\n  }\n"): (typeof documents)["\n  mutation DeletePost($id:ID! ) {\n    deletePost(id:$id)\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
